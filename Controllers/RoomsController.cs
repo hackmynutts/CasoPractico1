@@ -46,18 +46,20 @@ namespace CasoPractico1_JorgeMorua.Controllers
         {
             try
             {
-                // TODO: Add insert logic here
-                int insertedRoom = await _addRoomBL.AddRoom(room);
-                if (insertedRoom > 0)
+                if (!ModelState.IsValid)
                 {
-                    return RedirectToAction("RoomsList");
+                    return View(room);
                 }
-                ModelState.AddModelError("", "No se pudo insertar la habitacion");
+
+                int insertedRoom = await _addRoomBL.AddRoom(room);
+                if (insertedRoom > 0) return RedirectToAction("RoomsList");
+
+                ModelState.AddModelError("", "No se pudo insertar la habitación.");
                 return View(room);
             }
-            catch
+            catch (Exception ex)
             {
-                ModelState.AddModelError("", "Ocurrio un error al insertar la habitacion");
+                ModelState.AddModelError("", "Error al insertar: " + ex.GetBaseException().Message);
                 return View(room);
             }
         }
