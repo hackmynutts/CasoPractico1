@@ -1,0 +1,93 @@
+﻿@model IEnumerable<CasoPractico1_JorgeMorua.Abstractions.UIModules.Rooms.RoomsDTO>
+
+@{
+    ViewBag.Title = "RoomsList";
+}
+
+<h2>RoomsList</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.codigo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantHuespedes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantCamas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cantBanos)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cleaningLady)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.cleaningFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roomFee)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.roomType)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.estado)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.codigo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantHuespedes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantCamas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cantBanos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cleaningLady)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.cleaningFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.roomFee)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.roomType)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.estado)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

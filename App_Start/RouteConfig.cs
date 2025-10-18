@@ -16,7 +16,8 @@ namespace CasoPractico1_JorgeMorua
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
+                namespaces: new[] { "CasoPractico1_JorgeMorua.Controllers" } // <-- este es tu web project
             );
         }
     }
