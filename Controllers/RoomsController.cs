@@ -1,7 +1,11 @@
 ﻿using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Rooms.AddRoom;
+using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Rooms.EditRoom;
+using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Rooms.GetRoom;
 using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Rooms.RoomsList;
 using CasoPractico1_JorgeMorua.Abstractions.UIModules.Rooms;
 using CasoPractico1_JorgeMorua.BusinessLogic.Rooms.AddRoom;
+using CasoPractico1_JorgeMorua.BusinessLogic.Rooms.EditRoom;
+using CasoPractico1_JorgeMorua.BusinessLogic.Rooms.GetRoom;
 using CasoPractico1_JorgeMorua.BusinessLogic.Rooms.RoomsList;
 using System;
 using System.Collections.Generic;
@@ -16,10 +20,14 @@ namespace CasoPractico1_JorgeMorua.Controllers
     {
         private readonly IRoomsList_BL _roomsListBL;
         private readonly IAddRoom_BL _addRoomBL;
+        private readonly IGetRoom_BL _getRoomBL;
+        private readonly IEditRoom_BL _editRoomBL;
         public RoomsController() 
         {
             _roomsListBL = new RoomsList_BL();
             _addRoomBL = new AddRoom_BL();
+            _getRoomBL = new GetRoom_BL();
+            _editRoomBL = new EditRoom_BL();
         }
         // GET: Rooms
         public ActionResult RoomsList()
@@ -31,7 +39,8 @@ namespace CasoPractico1_JorgeMorua.Controllers
         // GET: Rooms/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            RoomsDTO room = _getRoomBL.GetRoom(id);
+            return View(room);
         }
 
         // GET: Rooms/Create
@@ -67,22 +76,30 @@ namespace CasoPractico1_JorgeMorua.Controllers
         // GET: Rooms/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            RoomsDTO room = _getRoomBL.GetRoom(id);
+            return View(room);
         }
 
         // POST: Rooms/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit(int id, RoomsDTO room)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("RoomsList");
+                var original = _getRoomBL.GetRoom(id);
+                int editedLines = await _editRoomBL.EditRoom(room); 
+                if (editedLines > 0)
+                {
+                    return RedirectToAction("RoomsList");
+                }
+                ModelState.AddModelError("", "No se editó ningún registro.");
+                return View(original);
             }
             catch
             {
-                return View();
+                ModelState.AddModelError("", "Ocurrió un error al editar el cliente.");
+                return View(room);
             }
         }
 
