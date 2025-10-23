@@ -37,7 +37,7 @@ namespace CasoPractico1_JorgeMorua.Controllers
         }
 
         // GET: Rooms/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
             RoomsDTO room = _getRoomBL.GetRoom(id);
             return View(room);
@@ -74,7 +74,7 @@ namespace CasoPractico1_JorgeMorua.Controllers
         }
 
         // GET: Rooms/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
             RoomsDTO room = _getRoomBL.GetRoom(id);
             return View(room);
@@ -82,12 +82,12 @@ namespace CasoPractico1_JorgeMorua.Controllers
 
         // POST: Rooms/Edit/5
         [HttpPost]
-        public async Task<ActionResult> Edit(int id, RoomsDTO room)
+        public async Task<ActionResult> Edit(string id, RoomsDTO room)
         {
             try
             {
                 // TODO: Add update logic here
-                var original = _getRoomBL.GetRoom(id);
+                RoomsDTO original = _getRoomBL.GetRoom(id);
                 int editedLines = await _editRoomBL.EditRoom(room); 
                 if (editedLines > 0)
                 {
@@ -96,7 +96,7 @@ namespace CasoPractico1_JorgeMorua.Controllers
                 ModelState.AddModelError("", "No se editó ningún registro.");
                 return View(original);
             }
-            catch
+            catch(Exception ex) 
             {
                 ModelState.AddModelError("", "Ocurrió un error al editar el cliente.");
                 return View(room);
@@ -104,14 +104,14 @@ namespace CasoPractico1_JorgeMorua.Controllers
         }
 
         // GET: Rooms/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             return View();
         }
 
         // POST: Rooms/Delete/5
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(string id, FormCollection collection)
         {
             try
             {
