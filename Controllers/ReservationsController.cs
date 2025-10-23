@@ -1,9 +1,11 @@
 ﻿using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Reservations.AddReservation;
+using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Reservations.EditReservation;
 using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Reservations.GetReservation;
 using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Reservations.ReservationsList;
 using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Rooms.AddRoom;
 using CasoPractico1_JorgeMorua.Abstractions.UIModules.Reservations;
 using CasoPractico1_JorgeMorua.BusinessLogic.Reservations.AddReservation;
+using CasoPractico1_JorgeMorua.BusinessLogic.Reservations.EditReservation;
 using CasoPractico1_JorgeMorua.BusinessLogic.Reservations.GetReservation;
 using CasoPractico1_JorgeMorua.BusinessLogic.Reservations.ReservationsList;
 using System;
@@ -20,12 +22,14 @@ namespace CasoPractico1_JorgeMorua.Controllers
         private IReservationList_BL _reservationListBL;
         private IGetReservation_BL _getReservationsBL;
         private IAddReservation_BL _addReservationBL;
+        private IEditReservation_BL _editReservationBL;
 
         public ReservationsController()
         {
             _reservationListBL = new ReservationList_BL();
             _getReservationsBL = new GetReservation_BL();
             _addReservationBL = new AddReservation_BL();
+            _editReservationBL = new EditReservation_BL();
         }
         // GET: Reservations
         public ActionResult ReservationsList()
@@ -74,22 +78,29 @@ namespace CasoPractico1_JorgeMorua.Controllers
         // GET: Reservations/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            ReservationsDTO reserva = _getReservationsBL.GetReservation(id);
+            return View(reserva);
         }
 
         // POST: Reservations/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public async Task<ActionResult> Edit( ReservationsDTO reservation)
         {
             try
             {
                 // TODO: Add update logic here
-
-                return RedirectToAction("ReservationsList");
+                int editedLines = await _editReservationBL.EditReservation(reservation);
+                if (editedLines > 0)
+                {
+                    return RedirectToAction("ReservationsList");
+                }
+                ModelState.AddModelError("", "No se pudo editar la reserva.");
+                return View(reservation);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", "Error al editar: " + ex.GetBaseException().Message);
+                return View(reservation);
             }
         }
 
