@@ -199,6 +199,7 @@
     <Content Include="Views\Reservations\Delete.cshtml" />
     <Content Include="Views\Reserve\ReserveList.cshtml" />
     <Content Include="Views\Reserve\Details.cshtml" />
+    <Content Include="Views\Reserve\LookForReserve.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
