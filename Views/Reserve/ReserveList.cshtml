@@ -4,11 +4,31 @@
     ViewBag.Title = "ReserveList";
 }
 
-<h2>ReserveList</h2>
+<h2>Habitaciones disponibles</h2>
+<div>
+    <p>
+        @Html.ActionLink("RESERVE NOW", "Create", "Reservations")
+    </p>
 
-<p>
-    @Html.ActionLink("RESERVE NOW", "Create")
-</p>
+    <div class="d-flex justify-content-end mb-3">
+        
+        @using (Html.BeginForm("Details", "Reservations", FormMethod.Get))
+        {
+            <div class="form-inline">
+                <p>
+                    <label for="id" class=" alert mr-2 alert-danger fw-bold">Tienes una reserva?</label>
+                </p>
+                <label for="id" class="mr-2">Buscar Reserva:</label>
+                <input type="number" id="id" name="id"
+                       class="form-control mr-2"
+                       value="@(Request["id"])"
+                       style="width: 150px;" />
+                <button type="submit" class="btn btn-primary mr-2">Buscar</button>
+                @Html.ActionLink("Limpiar", "ReserveList", "Reserve", null, new { @class = "btn btn-secondary" })
+            </div>
+        }
+    </div>
+</div>
 <table class="table">
     <tr>
         <th>
@@ -44,58 +64,58 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model)
-{
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.codigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantHuespedes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantCamas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantBanos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cleaningLady)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cleaningFee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.roomFee)
-        </td>
-        <td>
-            @{
-                string tipoHabitacion = "Desconocido";
-                if (item.roomType == 1)
-                {
-                    tipoHabitacion = "Junior";
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.codigo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.location)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantHuespedes)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantCamas)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cantBanos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cleaningLady)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.cleaningFee)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.roomFee)
+            </td>
+            <td>
+                @{
+                    string tipoHabitacion = "Desconocido";
+                    if (item.roomType == 1)
+                    {
+                        tipoHabitacion = "Junior";
+                    }
+                    else if (item.roomType == 2)
+                    {
+                        tipoHabitacion = "Superior";
+                    }
+                    else if (item.roomType == 3)
+                    {
+                        tipoHabitacion = "Suite";
+                    }
+                    @tipoHabitacion
                 }
-                else if (item.roomType == 2)
-                {
-                    tipoHabitacion = "Superior";
-                }
-                else if (item.roomType == 3)
-                {
-                    tipoHabitacion = "Suite";
-                }
-                @tipoHabitacion
-                }
-        </td>
-        <td>
-            @Html.ActionLink("Reserve", "Reserve", new { id=item.id }) 
-        </td>
-    </tr>
-}
+            </td>
+            <td>
+                @Html.ActionLink("Reserve", "Reserve", new { id = item.id })
+            </td>
+        </tr>
+    }
 
 </table>

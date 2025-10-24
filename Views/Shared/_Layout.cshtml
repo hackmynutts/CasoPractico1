@@ -3,14 +3,14 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - My ASP.NET Application</title>
+    <title>@ViewBag.Title - JORGE MORUA</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
         <div class="container">
-            @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            @Html.ActionLink("CASO DE ESTUDIO", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" title="Toggle navigation" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -22,7 +22,6 @@
                     <li>@Html.ActionLink("Contact", "Contact", "Home", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("Rooms", "RoomsList", "Rooms", new { area = "" }, new { @class = "nav-link" })</li>
                     <li>@Html.ActionLink("MAKE A RESERVE", "ReserveList", "Reserve", new { area = "" }, new { @class = "nav-link" })</li>
-                    <li>@Html.ActionLink("Reservations ADMIN", "ReservationsList", "Reservations", new { area = "" }, new { @class = "nav-link" })</li>
                 </ul>
             </div>
         </div>
@@ -31,7 +30,7 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; Jorge Morua - Rights reserved. @DateTime.Now.Year - My ASP.NET Application</p>
         </footer>
     </div>
 

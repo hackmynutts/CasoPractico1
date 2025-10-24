@@ -112,7 +112,7 @@
         <td>
             @Html.ActionLink("Edit", "Edit", new { id = item.codigo }) |
             @Html.ActionLink("Details", "Details", new { id = item.codigo }) |
-            @Html.ActionLink("Delete", "Delete", new { id = item.codigo })
+            @Html.ActionLink("Ver Reservas", "ReserveByRoom", "Reserve", new { id = item.id }, null)
         </td>
     </tr>
 }

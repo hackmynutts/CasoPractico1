@@ -1,9 +1,11 @@
 ﻿using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Reservations.AddReservation;
+using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Reserve.ReservationByRoom;
 using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Reserve.ReserveList;
 using CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Rooms.GetRoom;
 using CasoPractico1_JorgeMorua.Abstractions.UIModules.Reservations;
 using CasoPractico1_JorgeMorua.Abstractions.UIModules.Rooms;
 using CasoPractico1_JorgeMorua.BusinessLogic.Reservations.AddReservation;
+using CasoPractico1_JorgeMorua.BusinessLogic.Reserve.ReservationByRoom;
 using CasoPractico1_JorgeMorua.BusinessLogic.Reserve.ReserveList;
 using CasoPractico1_JorgeMorua.BusinessLogic.Rooms.GetRoom;
 using System;
@@ -20,11 +22,14 @@ namespace CasoPractico1_JorgeMorua.Controllers
         private readonly IReserveList_BL _reserveListBL;
         private readonly IAddReservation_BL _addReservation_BL;
         private readonly IGetRoom_BL _getRoom_BL;
+        private readonly IReservationByRoom_BL _reservationsByRoom_BL;
         public ReserveController() 
         {
             _reserveListBL = new ReserveList_BL();
             _addReservation_BL = new AddReservation_BL();
             _getRoom_BL = new GetRoom_BL();
+            _reservationsByRoom_BL = new ReservationByRoom_BL();
+
         }
         // GET: Reserve
         public ActionResult ReserveList()
@@ -33,10 +38,11 @@ namespace CasoPractico1_JorgeMorua.Controllers
             return View(availableRooms);
         }
 
-        // GET: Reserve/Details/5
-        public ActionResult Details(int id)
+        // GET: Reserve/ReserveByRoom/5
+        public ActionResult ReserveByRoom(int id)
         {
-            return View();
+            List<ReservationsDTO> reservations = _reservationsByRoom_BL.GetReservationsByRoom(id);
+            return View(reservations);
         }
 
         // GET: Reserve/Create

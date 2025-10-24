@@ -1,0 +1,105 @@
+﻿@model IEnumerable<CasoPractico1_JorgeMorua.Abstractions.UIModules.Reservations.ReservationsDTO>
+
+@{
+    ViewBag.Title = "ReserveByRoom";
+}
+
+<h2>Reservas al cuarto</h2>
+@if (Model == null)
+{
+
+
+    <div class="alert alert-warning">No se encontró reservas.</div>
+}
+else
+{
+<div>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombrePersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaInicioReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaFinReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idRoom)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombrePersona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaInicioReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaFinReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idRoom)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.id })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
+        <p>
+            @Html.ActionLink("Back to List", "RoomsList", "Rooms")
+        </p>
+}

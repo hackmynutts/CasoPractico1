@@ -42,6 +42,10 @@ namespace CasoPractico1_JorgeMorua.Controllers
         public ActionResult Details(int id)
         {
             ReservationsDTO reservation = _getReservationsBL.GetReservation(id);
+            if (reservation == null)
+            {
+                return HttpNotFound("No existe la reservación solicitada.");
+            }
             return View(reservation);
         }
 
