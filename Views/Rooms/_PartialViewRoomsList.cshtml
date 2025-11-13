@@ -1,0 +1,98 @@
+﻿@model IEnumerable<CasoPractico1_JorgeMorua.Abstractions.UIModules.Rooms.RoomsDTO>
+
+<div class="table">
+    <div class="table-responsive">
+        <table>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.codigo)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.location)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.nombre)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cantHuespedes)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cantCamas)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cantBanos)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cleaningLady)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.cleaningFee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.roomFee)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.roomType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.createdAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.updatedAt)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.estado)
+                </th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.codigo)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.location)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.nombre)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cantHuespedes)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cantCamas)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cantBanos)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cleaningLady)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.cleaningFee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roomFee)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.roomType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.createdAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.updatedAt)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.estado)
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+
+</div>
+

@@ -163,6 +163,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
+    <Content Include="Scripts\DataTable\dataTables.dataTables.min.css" />
+    <Content Include="Scripts\DataTable\dataTables.min.js" />
     <Content Include="Scripts\jquery-3.7.0.js" />
     <Content Include="Scripts\jquery-3.7.0.min.js" />
     <Content Include="Scripts\jquery-3.7.0.slim.js" />
@@ -173,6 +175,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\Rooms\rooms.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -201,6 +204,7 @@
     <Content Include="Views\Reserve\Details.cshtml" />
     <Content Include="Views\Reserve\LookForReserve.cshtml" />
     <Content Include="Views\Reserve\ReserveByRoom.cshtml" />
+    <Content Include="Views\Rooms\_PartialViewRoomsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -29,6 +29,12 @@ namespace CasoPractico1_JorgeMorua.Controllers
             _getRoomBL = new GetRoom_BL();
             _editRoomBL = new EditRoom_BL();
         }
+
+        public ActionResult PartialViewRooms()
+        {
+            List<RoomsDTO> rooms = _roomsListBL.GetRooms();
+            return PartialView("_PartialViewRoomsList", rooms);
+        }
         // GET: Rooms
         public ActionResult RoomsList()
         {

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - JORGE MORUA</title>
     @Styles.Render("~/Content/css")
+    <link href="~/Scripts/DataTable/dataTables.dataTables.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
@@ -36,6 +37,7 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    <script src="~/Scripts/DataTable/dataTables.min.js"></script>
     @RenderSection("scripts", required: false)
 </body>
 </html>

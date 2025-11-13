@@ -9,112 +9,152 @@
 <p>
     @Html.ActionLink("Create New Room", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantHuespedes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantCamas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantBanos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cleaningLady)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cleaningFee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.roomFee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.roomType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.createdAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.updatedAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.estado)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.codigo)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.location)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantHuespedes)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantCamas)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cantBanos)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cleaningLady)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cleaningFee)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.roomFee)
-        </td>
-        <td>
-            @{
-                string tipoHabitacion = "Desconocido";
-                if (item.roomType == 1)
+<div>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" id="openModal">
+        Ver cuartos
+    </button>
+</div>
+<div class="table-responsive">
+    <div class="table-responsive">
+        <table class="table" id="roomsTable">
+            <thead>
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.codigo)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.location)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.nombre)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cantHuespedes)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cantCamas)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cantBanos)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cleaningLady)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.cleaningFee)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.roomFee)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.roomType)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.createdAt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.updatedAt)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.estado)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
                 {
-                    tipoHabitacion = "Junior";
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.codigo)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.location)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.nombre)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cantHuespedes)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cantCamas)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cantBanos)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cleaningLady)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.cleaningFee)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.roomFee)
+                        </td>
+                        <td>
+                            @{
+                                string tipoHabitacion = "Desconocido";
+                                if (item.roomType == 1)
+                                {
+                                    tipoHabitacion = "Junior";
+                                }
+                                else if (item.roomType == 2)
+                                {
+                                    tipoHabitacion = "Superior";
+                                }
+                                else if (item.roomType == 3)
+                                {
+                                    tipoHabitacion = "Suite";
+                                }
+                                @tipoHabitacion
+                            }
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.createdAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.updatedAt)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.estado)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.codigo }) |
+                            @Html.ActionLink("Details", "Details", new { id = item.codigo }) |
+                            @Html.ActionLink("Ver Reservas", "ReserveByRoom", "Reserve", new { id = item.id }, null)
+                        </td>
+                    </tr>
                 }
-                else if (item.roomType == 2)
-                {
-                    tipoHabitacion = "Superior";
-                }
-                else if (item.roomType == 3)
-                {
-                    tipoHabitacion = "Suite";
-                }
-                @tipoHabitacion
-            }
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.createdAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.updatedAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.estado)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id = item.codigo }) |
-            @Html.ActionLink("Details", "Details", new { id = item.codigo }) |
-            @Html.ActionLink("Ver Reservas", "ReserveByRoom", "Reserve", new { id = item.id }, null)
-        </td>
-    </tr>
+            </tbody>
+
+        </table>
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script src="~/Scripts/Rooms/rooms.js"></script>
 }
-
-</table>
