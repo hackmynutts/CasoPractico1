@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36518.9 d17.14
+VisualStudioVersion = 17.14.36518.9
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasoPractico1_JorgeMorua", "CasoPractico1_JorgeMorua.csproj", "{2FA89AF5-DEAE-40F0-9B6D-9F8761955B3B}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasoPractico1_JorgeMorua.DataAccess", "..\CasoPractico1_JorgeMorua.DataAccess\CasoPractico1_JorgeMorua.DataAccess.csproj", "{E7F7BAE1-A9B8-4421-9A63-A88417F8BE47}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasoPractico1_JorgeMorua.Abstractions", "..\CasoPractico1_JorgeMorua.Abstractions\CasoPractico1_JorgeMorua.Abstractions.csproj", "{FB43FB26-E770-408A-98B7-AD5FC65AFD87}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CasoPractico1_JorgeMorua.Identity", "..\CasoPractico1_JorgeMorua.Identity\CasoPractico1_JorgeMorua.Identity.csproj", "{0B066D14-31C7-4785-990B-6DF3D4ED5D38}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{FB43FB26-E770-408A-98B7-AD5FC65AFD87}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FB43FB26-E770-408A-98B7-AD5FC65AFD87}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FB43FB26-E770-408A-98B7-AD5FC65AFD87}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0B066D14-31C7-4785-990B-6DF3D4ED5D38}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0B066D14-31C7-4785-990B-6DF3D4ED5D38}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0B066D14-31C7-4785-990B-6DF3D4ED5D38}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0B066D14-31C7-4785-990B-6DF3D4ED5D38}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
