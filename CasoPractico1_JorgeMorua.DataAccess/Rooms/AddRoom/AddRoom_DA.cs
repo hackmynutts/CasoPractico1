@@ -23,22 +23,11 @@ namespace CasoPractico1_JorgeMorua.DataAccess.Rooms.AddRoom
             {
                 RoomsDA newRoomDA = Convert2DA(newRoom);
 
-                // EF6: loggea el SQL en la ventana Output (Debug)
-                _context.Database.Log = s => System.Diagnostics.Debug.WriteLine(s);
-
                 _context.Rooms.Add(newRoomDA);
                 return await _context.SaveChangesAsync();
             }
-            catch (System.Data.Entity.Validation.DbEntityValidationException ex)
-            {
-                var errs = ex.EntityValidationErrors
-                    .SelectMany(e => e.ValidationErrors)
-                    .Select(e => $"{e.PropertyName}: {e.ErrorMessage}");
-                throw new Exception("Validación EF: " + string.Join("; ", errs), ex);
-            }
             catch (Exception ex)
             {
-                // MUY IMPORTANTE: revisa ex.GetBaseException().Message en el depurador
                 throw new Exception("Fallo al insertar: " + ex.GetBaseException().Message, ex);
             }
         }

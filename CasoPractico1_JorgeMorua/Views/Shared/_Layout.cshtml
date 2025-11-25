@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - JORGE MORUA</title>
     @Styles.Render("~/Content/css")
-    <link href="~/Scripts/DataTable/dataTables.dataTables.min.css" rel="stylesheet" />
     @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Scripts/DataTable/dataTables.dataTables.min.css" rel="stylesheet" />
 </head>
 <body>
     <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-dark bg-dark">
@@ -38,6 +38,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     <script src="~/Scripts/DataTable/dataTables.min.js"></script>
-    @RenderSection("scripts", required: false)
+    <script src="~/Scripts/SweetAlert/sweetalert2@11.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>

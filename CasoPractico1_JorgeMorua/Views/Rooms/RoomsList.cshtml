@@ -6,11 +6,11 @@
 
 <h2>Habitaciones del hotel</h2>
 
-<p>
-    @Html.ActionLink("Create New Room", "Create")
-</p>
-
 <div>
+    <!-- Button trigger modal add-->
+    <button type="button" class="btn btn-primary" id="openModalAdd">
+        Agregar cuartos
+    </button>
     <!-- Button trigger modal -->
     <button type="button" class="btn btn-primary" id="openModal">
         Ver cuartos
@@ -150,6 +150,25 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Add-->
+
+<div class="modal fade" id="AddRoomModal" tabindex="-1" aria-labelledby="AddRoomModal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="AddRoomModal">Agregar cuarto</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                ....
+            </div>
+            <div class="modal-footer">
+                <button id="submitRoomsAdd" type="submit" class="btn btn-primary">+ Crear</button>
             </div>
         </div>
     </div>

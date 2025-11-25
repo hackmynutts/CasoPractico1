@@ -50,6 +50,40 @@ namespace CasoPractico1_JorgeMorua.Controllers
         }
 
         // GET: Rooms/Create
+        public ActionResult CreatePV()
+        {
+            return PartialView("CreatePV");
+        }
+
+        // POST: Rooms/Create
+        [HttpPost]
+        public async Task<ActionResult> CreatePV(RoomsDTO room)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                {
+                    return View(room);
+                }
+
+                int insertedRoom = await _addRoomBL.AddRoom(room);
+                if (insertedRoom > 0)
+                {
+                    // Para AJAX devolvemos JSON
+                    return Json(new { success = true });
+                }
+
+                ModelState.AddModelError("", "No se pudo insertar la habitación.");
+                return PartialView("CreatePV",room);
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError("", "Error al insertar: " + ex.GetBaseException().Message);
+                return PartialView("CreatePV", room);
+            }
+        }
+
+        // GET: Rooms/Create
         public ActionResult Create()
         {
             return View();
