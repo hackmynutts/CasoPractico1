@@ -20,23 +20,48 @@ namespace CasoPractico1_JorgeMorua.DataAccess.Rooms.RoomsList
         {
             List<RoomsDTO> roomsList = (from rooms
                                      in _context.Rooms
-                                    select new RoomsDTO
-                                    {
-                                        id = rooms.id,
-                                        codigo = rooms.codigo,
-                                        location = rooms.location,
-                                        nombre = rooms.nombre,
-                                        cantHuespedes = rooms.cantHuespedes,
-                                        cantCamas = rooms.cantCamas,
-                                        cantBanos = rooms.cantBanos,
-                                        cleaningLady = rooms.cleaningLady,
-                                        cleaningFee = rooms.cleaningFee,
-                                        roomFee = rooms.roomFee,
-                                        roomType = rooms.roomType,
-                                        createdAt = rooms.createdAt,
-                                        updatedAt = rooms.updatedAt,
-                                        estado = rooms.estado
-                                    }).ToList();
+                                        select new RoomsDTO
+                                        {
+                                            id = rooms.id,
+                                            codigo = rooms.codigo,
+                                            location = rooms.location,
+                                            nombre = rooms.nombre,
+                                            cantHuespedes = rooms.cantHuespedes,
+                                            cantCamas = rooms.cantCamas,
+                                            cantBanos = rooms.cantBanos,
+                                            cleaningLady = rooms.cleaningLady,
+                                            cleaningFee = rooms.cleaningFee,
+                                            roomFee = rooms.roomFee,
+                                            roomType = rooms.roomType,
+                                            createdAt = rooms.createdAt,
+                                            updatedAt = rooms.updatedAt,
+                                            estado = rooms.estado
+                                        }).ToList();
+            return roomsList;
+        }
+
+        public List<RoomsDTO> GetRoomsActivos()
+        {
+            List<RoomsDTO> roomsList = (from rooms
+                                     in _context.Rooms
+                                        where rooms.estado == true
+                                        select new RoomsDTO
+                                        {
+                                            id = rooms.id,
+                                            codigo = rooms.codigo,
+                                            location = rooms.location,
+                                            nombre = rooms.nombre,
+                                            cantHuespedes = rooms.cantHuespedes,
+                                            cantCamas = rooms.cantCamas,
+                                            cantBanos = rooms.cantBanos,
+                                            cleaningLady = rooms.cleaningLady,
+                                            cleaningFee = rooms.cleaningFee,
+                                            roomFee = rooms.roomFee,
+                                            roomType = rooms.roomType,
+                                            createdAt = rooms.createdAt,
+                                            updatedAt = rooms.updatedAt,
+                                            estado = rooms.estado
+                                        }).ToList();
             return roomsList;
         }
     }

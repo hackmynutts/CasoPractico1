@@ -22,5 +22,11 @@ namespace CasoPractico1_JorgeMorua.BusinessLogic.Rooms.RoomsList
             List<RoomsDTO> rooms = _roomsListDA.GetRooms();
             return rooms;
         }
+
+        public List<RoomsDTO> GetRoomsActivos()
+        {
+            List<RoomsDTO> rooms = _roomsListDA.GetRoomsActivos();
+            return rooms;
+        }
     }
 }

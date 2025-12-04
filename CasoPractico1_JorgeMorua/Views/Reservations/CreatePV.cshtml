@@ -1,0 +1,89 @@
+﻿@model CasoPractico1_JorgeMorua.Abstractions.UIModules.Reservations.ReservationsDTO
+
+@using (Html.BeginForm("CreatePV", "Reservations", FormMethod.Post, new { id = "formReservationsAdd" }))
+{
+    @Html.AntiForgeryToken()
+
+    <h4>RESERVA</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.nombrePersona, htmlAttributes: new { @class = "form-label" })
+        @Html.EditorFor(model => model.nombrePersona, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.nombrePersona, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.identificacion, htmlAttributes: new { @class = "form-label" })
+        @Html.EditorFor(model => model.identificacion, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.identificacion, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.cel, htmlAttributes: new { @class = "form-label" })
+        @Html.EditorFor(model => model.cel, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.cel, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.email, htmlAttributes: new { @class = "form-label" })
+        @Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.fechaNacimiento, htmlAttributes: new { @class = "form-label" })
+        @Html.TextBoxFor(model => model.fechaNacimiento,
+            new { @class = "form-control", type = "date", max = DateTime.Now.ToString("yyyy-MM-dd") })
+        @Html.ValidationMessageFor(model => model.fechaNacimiento, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.address, htmlAttributes: new { @class = "form-label" })
+        @Html.EditorFor(model => model.address, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.address, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.idRoom, htmlAttributes: new { @class = "form-label" })
+        @Html.DropDownListFor(
+            model => model.idRoom,
+            (IEnumerable<SelectListItem>)ViewBag.RoomsList,
+            "-- Seleccione una habitación --",
+            new { @class = "form-select" }
+        )
+        @Html.ValidationMessageFor(model => model.idRoom, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.monto, htmlAttributes: new { @class = "form-label" })
+        @Html.TextBoxFor(model => model.monto,
+            new { @class = "form-control", @readonly = "readonly", id = "monto" })
+        @Html.ValidationMessageFor(model => model.monto, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.fechaInicioReserva, htmlAttributes: new { @class = "form-label" })
+        @Html.TextBoxFor(model => model.fechaInicioReserva,
+            new { @class = "form-control", type = "date", id = "FechaInicioReserva", min = DateTime.Now.ToString("yyyy-MM-dd") })
+        @Html.ValidationMessageFor(model => model.fechaInicioReserva, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mb-3">
+        @Html.LabelFor(model => model.fechaFinReserva, htmlAttributes: new { @class = "form-label" })
+        @Html.TextBoxFor(model => model.fechaFinReserva,
+            new { @class = "form-control", type = "date", id = "FechaFinReserva", min = DateTime.Now.ToString("yyyy-MM-dd") })
+        @Html.ValidationMessageFor(model => model.fechaFinReserva, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="mt-3">
+        <button class="btn btn-outline-primary w-100" id="submitReservationsAdd" type="submit">
+            Crear nueva reserva
+        </button>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

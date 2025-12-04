@@ -16,11 +16,11 @@ namespace CasoPractico1_JorgeMorua.DataAccess.Rooms.GetRoom
         }
 
         // Implement data access methods to retrieve room information from the database
-        public RoomsDTO GetRoom(string roomId)
+        public RoomsDTO GetRoom(string roomCodigo)
         {
             RoomsDTO room = (from rooms
                              in _context.Rooms
-                             where rooms.codigo == roomId
+                             where rooms.codigo == roomCodigo
                              select new RoomsDTO
                                {
                                    id = rooms.id,

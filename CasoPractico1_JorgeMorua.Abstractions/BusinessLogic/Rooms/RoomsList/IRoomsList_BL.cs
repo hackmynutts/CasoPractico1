@@ -10,5 +10,6 @@ namespace CasoPractico1_JorgeMorua.Abstractions.BusinessLogic.Rooms.RoomsList
     public interface IRoomsList_BL
     {
         List<RoomsDTO> GetRooms();
+        List<RoomsDTO> GetRoomsActivos();
     }
 }

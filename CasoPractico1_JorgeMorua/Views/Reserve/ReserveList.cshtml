@@ -7,11 +7,15 @@
 <h2>Habitaciones disponibles</h2>
 <div>
     <p>
-        @Html.ActionLink("RESERVE NOW", "Create", "Reservations")
+        @using (Html.BeginForm("CreatePV", "Reservations", FormMethod.Get)) { 
+            <button class="btn btn-outline-primary addReservations" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightReservationsAdd" aria-controls="offcanvasRightReservationsAdd">
+                Crear nueva reserva
+            </button>
+        }
     </p>
 
     <div class="d-flex justify-content-end mb-3">
-        
+
         @using (Html.BeginForm("Details", "Reservations", FormMethod.Get))
         {
             <div class="form-inline">
@@ -19,7 +23,7 @@
                     <label for="id" class=" alert mr-2 alert-danger fw-bold">Tienes una reserva?</label>
                 </p>
                 <label for="id" class="mr-2">Buscar Reserva:</label>
-                <input type="number" id="id" name="id"
+                <input class="my-3" type="number" id="id" name="id"
                        class="form-control mr-2"
                        value="@(Request["id"])"
                        style="width: 150px;" />
@@ -29,93 +33,128 @@
         }
     </div>
 </div>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.codigo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.location)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantHuespedes)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantCamas)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cantBanos)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cleaningLady)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cleaningFee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.roomFee)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.roomType)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table" id="reservationsTable">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.codigo)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.location)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.nombre)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cantHuespedes)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cantCamas)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cantBanos)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cleaningLady)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.cleaningFee)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.roomFee)
-            </td>
-            <td>
-                @{
-                    string tipoHabitacion = "Desconocido";
-                    if (item.roomType == 1)
-                    {
-                        tipoHabitacion = "Junior";
-                    }
-                    else if (item.roomType == 2)
-                    {
-                        tipoHabitacion = "Superior";
-                    }
-                    else if (item.roomType == 3)
-                    {
-                        tipoHabitacion = "Suite";
-                    }
-                    @tipoHabitacion
-                }
-            </td>
-            <td>
-                @Html.ActionLink("Reserve", "Reserve", new { id = item.id })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.codigo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.location)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantHuespedes)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantCamas)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cantBanos)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cleaningLady)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cleaningFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roomFee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.roomType)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.codigo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.location)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantHuespedes)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantCamas)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cantBanos)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cleaningLady)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cleaningFee)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.roomFee)
+                </td>
+                <td>
+                    @{
+                        string tipoHabitacion = "Desconocido";
+                        if (item.roomType == 1)
+                        {
+                            tipoHabitacion = "Junior";
+                        }
+                        else if (item.roomType == 2)
+                        {
+                            tipoHabitacion = "Superior";
+                        }
+                        else if (item.roomType == 3)
+                        {
+                            tipoHabitacion = "Suite";
+                        }
+                        @tipoHabitacion
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Reserve", "Reserve", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
+
+
+@*EDIT RIGHT OFFCANVAS*@
+
+
+<div class="offcanvas offcanvas-end w-50" tabindex="-1" id="offcanvasRightReservationsEdit" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Editar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        ...
+    </div>
+</div>
+
+@*ADD RIGHT OFFCANVAS*@
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRightReservationsAdd" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 class="offcanvas-title" id="offcanvasRightLabel">Agregar</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body">
+        ...
+    </div>
+</div>
+
+
+
+@section Scripts {
+    <script src="~/Scripts/Reservations/reservations.js"></script>
+}

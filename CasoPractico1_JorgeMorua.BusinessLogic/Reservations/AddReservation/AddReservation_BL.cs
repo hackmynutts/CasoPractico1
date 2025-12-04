@@ -35,12 +35,10 @@ namespace CasoPractico1_JorgeMorua.BusinessLogic.Reservations.AddReservation
         public async Task<int> AddReserve(ReservationsDTO reservation2Add)
         {
             RoomsDTO room = _getRoomDA.GetRoomID(reservation2Add.idRoom);
-            int cantDias = (reservation2Add.fechaFinReserva - reservation2Add.fechaInicioReserva).Days;
             reservation2Add.createdAt = _date.GetDate();
-            reservation2Add.monto = (room.roomFee* cantDias) +room.cleaningFee;
-            int reservationAdded = await _addReservationDA.AddReservation(reservation2Add);
+            int reservationID = await _addReservationDA.AddReservation(reservation2Add);
 
-            if (reservationAdded > 0)
+            if (reservationID > 0)
             {
                 room.estado = false;
                 int rowsAffected = await _editRoomDA.EditRoom(room);
@@ -51,7 +49,7 @@ namespace CasoPractico1_JorgeMorua.BusinessLogic.Reservations.AddReservation
                     throw new Exception("No se pudo actualizar el estado de la habitación a no disponible.");
                 }
             }
-            return reservationAdded;
+            return reservationID;
         }
     }
 }

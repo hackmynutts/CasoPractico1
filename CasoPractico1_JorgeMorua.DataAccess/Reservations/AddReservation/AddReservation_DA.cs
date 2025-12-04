@@ -24,7 +24,8 @@ namespace CasoPractico1_JorgeMorua.DataAccess.Reservations.AddReservation
             {
                 ReservationsDA newReserve = Convert2DA(reservationToAdd);
                 _context.Reservations.Add(newReserve);
-                return await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
+                return  newReserve.id;
             }
             catch (Exception ex) 
             {

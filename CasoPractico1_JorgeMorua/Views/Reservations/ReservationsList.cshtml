@@ -4,91 +4,102 @@
     ViewBag.Title = "ReservationsList";
 }
 <div class="align-content-md-center ">
-    <h2 class="justify-content-center" >Reservas totales</h2>
+    <h2 class="justify-content-center">Reservas totales</h2>
 </div>
 
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    <button class="btn btn-outline-primary addReservation" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRightReservationsAdd" aria-controls="offcanvasRightReservationsAdd">
+        Crear nueva reserva
+    </button>
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.nombrePersona)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.identificacion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.cel)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaNacimiento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.monto)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaInicioReserva)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.fechaFinReserva)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.createdAt)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.idRoom)
-        </th>
-        <th></th>
-    </tr>
-
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.nombrePersona)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.identificacion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cel)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.email)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaNacimiento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.monto)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaInicioReserva)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fechaFinReserva)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.createdAt)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.idRoom)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
-            @Html.ActionLink("Details of Reserve", "Details", new { id=item.id })
-        </td>
-    </tr>
-}
+<table id="reservationsTable" class="table table-responsive">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.nombrePersona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.identificacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.cel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaNacimiento)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.monto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaInicioReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fechaFinReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.createdAt)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idRoom)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.nombrePersona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.identificacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaNacimiento)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.address)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.monto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaInicioReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.fechaFinReserva)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.createdAt)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.idRoom)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.id }) |
+                    @Html.ActionLink("Details of Reserve", "Details", new { id = item.id })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
+
+
+@section Scripts {
+    <script src="~/Scripts/Reservations/reservations.js"></script>
+}
